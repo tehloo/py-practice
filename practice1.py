@@ -40,9 +40,13 @@ def ant_route(bars):
             px = bars[compare_i] - half
             py = bars[compare_i] + half
 
+            #try:
+
             if (isOverlap(x, y, px, py)):
                 toVisit.remove(cur_i)
                 visit.append(cur_i)
+                if (len(toVisit) == 1):
+                    break
                 cur_i = compare_i
                 if (cur_i == len(bars) - 1):
                     compare_i = toVisit[0]
@@ -55,6 +59,12 @@ def ant_route(bars):
                 else:
                     compare_i = toVisit[toVisit.index(compare_i) + 1]
 
+            # except IndexError as e:
+            #
+            #     print("Exception!!!")
+            #     print(toVisit, cur_i, compare_i)
+            #     print(visit)
+            #     print(e)
 
         if (len(toVisit) == 1):
             break;
