@@ -25,14 +25,15 @@ def isOverlap(x1, y1, x2, y2):
 def ant_route(bars):
     print(bars)
     half = 0
-    while half < 10:
-        # half is increasing...
+    while True:
+        # half value is increasing...
         half += 1
 
         visit = []
-        toVisit = range(len(bars))
+        toVisit = list(range(len(bars)))
         cur_i = 0
         compare_i = toVisit[1]
+        print("Trying with ", half)
 
         while cur_i != compare_i:
             x = bars[cur_i] - half
@@ -41,20 +42,22 @@ def ant_route(bars):
             py = bars[compare_i] + half
 
             #try:
-
+            print("%d(%d:%d-%d) compare to %d(%d:%d-%d)" % (cur_i, bars[cur_i], x, y, compare_i, bars[compare_i] , px, py))
             if (isOverlap(x, y, px, py)):
                 toVisit.remove(cur_i)
                 visit.append(cur_i)
                 if (len(toVisit) == 1):
                     break
                 cur_i = compare_i
-                if (cur_i == len(bars) - 1):
+                if (toVisit.index(cur_i) == len(toVisit) - 1):
                     compare_i = toVisit[0]
                 else:
                     compare_i = toVisit[toVisit.index(cur_i) + 1]
 
+                print(" found! ", visit, " to visit ", toVisit)
+
             else:
-                if (compare_i == len(bars) - 1):
+                if (toVisit.index(compare_i) == len(toVisit) - 1):
                     compare_i = toVisit[0]
                 else:
                     compare_i = toVisit[toVisit.index(compare_i) + 1]
@@ -72,7 +75,7 @@ def ant_route(bars):
     print ("result=", half)
 
 
-lists = read_integers('/Users/tehloo/PycharmProjects/practice/file_input.txt')
+lists = read_integers('input01.txt')
 
 for bars in lists:
     ant_route(bars)
