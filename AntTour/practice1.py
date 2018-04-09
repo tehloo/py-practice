@@ -1,3 +1,4 @@
+import math
 
 def read_integers(filename):
     with open(filename) as f:
@@ -15,23 +16,25 @@ def read_integers(filename):
         return bar_list
 
 def ant_route(bars):
-    print(bars)
-    length = 0;
-    while length < 10:
-        print (length)
-        for center in bars:
+    bars.sort()
 
+    i = 0
+    max_gap = 0
+    toVisit = list(range(0, len(bars)))
 
+    for _ in range(0, len(bars)):
+        if (max(toVisit) - i >= 2):
+            gap = abs(bars[i + 2] - bars[i])
+            i += 2
+            toVisit.pop(toVisit.index(i))
+        else:
+            j = toVisit.pop(len(toVisit) - 1)
+            gap = abs(bars[j] - bars[i])
+            i = j
 
+        if max_gap < gap : max_gap = gap
 
-
-
-        length += 1
-
-
-
-
-
+    return math.ceil(max_gap / 2)
 
 lists = read_integers('input01.txt')
 
