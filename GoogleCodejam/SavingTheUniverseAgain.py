@@ -56,11 +56,5 @@ def optimize_combo(max_damage, combo):
 cases = int(input())
 input_text = ""
 for _ in range(cases):
-    line = input()
-    input_text += line + "\n"
-
-index = 0
-for line in input_text.splitlines():
-    index += 1
-    token = line.split()
-    print("Case #%d: %s" % (index, optimize_combo(int(token[0]), token[1])))
+    line = input().split()
+    print("Case #%d: %s" % (_, optimize_combo(int(line[0]), line[1])))
