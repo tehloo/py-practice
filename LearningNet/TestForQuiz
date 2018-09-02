@@ -1,0 +1,34 @@
+def fileWrite():
+    fp = open("test.txt", "w")
+    fp.write("abc\ndef\nghi")
+    fp.write("hello")
+    fp.close()
+
+def fileRead():
+    fp = open("test.txt", "r")
+    for r in (fp.readlines()) :
+        print (r)
+
+    fp.close()
+
+fileWrite()
+fileRead()
+
+
+import os
+
+#os.system('dir')
+
+d = 4 % 10 / 4 + 2 // 3
+print (d)
+
+a = 1
+while a < 5:
+    print ('a=', a)
+    a += 1
+    if a==3 :
+        break
+else:
+    print ('else ...')
+
+print ('hello')

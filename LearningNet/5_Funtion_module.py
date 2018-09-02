@@ -66,3 +66,4 @@ def fn(a):
 
 fn(g)
 print( 'g=', g)
+
